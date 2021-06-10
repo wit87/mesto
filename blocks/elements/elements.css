@@ -1,0 +1,22 @@
+.elements {
+    margin: 0 auto;
+    padding-top: 51px;      
+    width: calc(100% - 400px);
+  }
+  
+  @media screen and (max-width: 920px) {
+  
+    .elements {    
+    width: calc(100% - 40px);
+    }
+  
+  }
+  
+  @media screen and (max-width: 545px) {
+  
+    .elements {    
+    width: calc(100%);
+    padding-top: 36px;
+    }
+  }
+  
