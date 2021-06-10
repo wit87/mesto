@@ -9,43 +9,99 @@
 </head>
 
 <body class="page">
-<div class="root">
-<header class="header">
-    <img src="./images/logo/logo.svg" alt="Логотип" class="header__logo">
-</header>
+    <div class="root">
+        <header class="header">
+            <img src="./images/logo/logo.svg" alt="Логотип" class="header__logo">
+        </header>
 
-<main class="content">
-    <section class="profile">
-    <div class="profile__block">
-    <img src="./images/avatar/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
-     <div class="profile_info">
-        <h1 class="profile__name">Жак-Ив Кусто<div class="edit_button"></div></h1>
-        <p class="profile__cont">Исследователь океана</p>
-     </div>  </div>
-     
-
-     <div class="add_button">+</div>
-   </section>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__block">
+                    <img src="./images/avatar/kusto.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
+                    <div class="profile__info">
+                        <h1 class="profile__name">Жак-Ив Кусто<button class="profile__edit_button"></button></h1>
+                        <p class="profile__cont">Исследователь океана</p>
+                    </div>
+                </div>
 
 
-
-   <section class="elements">
-     <ul class="elements__grid">
-<li class="element"></li>
-<li class="element"></li>
-<li class="element"></li>
-<li class="element"></li>
-<li class="element"></li>
-<li class="element"></li>
-
-     </ul>
-   </section>
+                <button class="profile__add_button"></button>
+            </section>
 
 
 
-<footer class="footer">
-    <p class="footer__copiright">© 2020 Mesto Russia</p>
-</footer>
-</div>    
+            <section class="elements">
+                <ul class="elements__grid">
+                    <li class="element">
+                        <img src="./images/mesto/karachaevsk.jpg" alt="карачаевск" class="element__image">
+                        <div class="element__item">
+                            <h3 class="element__title">Карачаевск</h3>
+                            <button class="element__like"></button>
+                        </div>
+                    </li>
+
+                    <li class="element">
+                        <img src="./images/mesto/karachaevsk.jpg" alt="карачаевск" class="element__image">
+                        <div class="element__item">
+                            <h3 class="element__title">Карачаевск</h3>
+                            <button class="element__like"></button>
+                        </div>
+                    </li>
+
+                    <li class="element">
+                        <img src="./images/mesto/karachaevsk.jpg" alt="карачаевск" class="element__image">
+                        <div class="element__item">
+                            <h3 class="element__title">Карачаевск</h3>
+                            <button class="element__like"></button>
+                        </div>
+                    </li>
+
+                    <li class="element">
+                        <img src="./images/mesto/karachaevsk.jpg" alt="карачаевск" class="element__image">
+                        <div class="element__item">
+                            <h3 class="element__title">Карачаевск</h3>
+                            <button class="element__like"></button>
+                        </div>
+                    </li>
+
+                    <li class="element">
+                        <img src="./images/mesto/karachaevsk.jpg" alt="карачаевск" class="element__image">
+                        <div class="element__item">
+                            <h3 class="element__title">Карачаевск</h3>
+                            <button class="element__like"></button>
+                        </div>
+                    </li>
+
+                    <li class="element">
+                        <img src="./images/mesto/karachaevsk.jpg" alt="карачаевск" class="element__image">
+                        <div class="element__item">
+                            <h3 class="element__title">Карачаевск</h3>
+                            <button class="element__like"></button>
+                        </div>
+                    </li>
+
+                </ul>
+            </section>
+
+
+
+            <footer class="footer">
+                <p class="footer__copiright">© 2020 Mesto Russia</p>
+            </footer>
+    </div>
+    <div class="edit-form">
+        <div class="edit-form__container">
+            <h2 class="edit-form__heading">Редактировать профиль</h2>
+            <input type="text" class="edit-form__item edit-form__item_name" id="heading" name="form_name"
+                placeholder="Жак-Ив Кусто" required>
+            <input type="text" class="edit-form__item edit-form__item_info" id="subheading" name="form_info"
+                placeholder="Исследователь океана" required>
+            <button class="edit-form__save_button">Сохранить</button>
+            <button class="edit-form__close_button"></button>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>

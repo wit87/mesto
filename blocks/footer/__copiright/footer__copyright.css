@@ -5,7 +5,7 @@ line-height: 22px;
 color: #545454;
 }
 
-@media screen and (max-width: 545px) {
+@media screen and (max-width: 648px) {
       
     .header {    
         font-size: 14px;
