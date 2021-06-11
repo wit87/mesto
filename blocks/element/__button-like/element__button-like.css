@@ -1,0 +1,31 @@
+.element__button-like {
+  margin: 0;
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../../../images/_like.svg);
+  background-size: contain;
+  cursor: pointer;
+  overflow: hidden;
+  -moz-transition: opacity 0.4s;
+  -webkit-transition: opacity 0.4s;
+  -ms-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+.element__button-like:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50)
+}
+
+.element__button-like:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

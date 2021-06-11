@@ -2,24 +2,15 @@
   margin: 0 auto;
   padding-top: 67px;
   padding-bottom: 60px;
-  width: calc(100% - 400px);
+  width: calc(100% - 38px);
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 680px) {
 
-  .footer {    
-  width: calc(100% - 40px);
-  }
-
-}
-
-@media screen and (max-width: 648px) {
-
-  .footer {    
-  width: calc(100% - 38px);
+  .footer {
   padding-top: 48px;
   padding-bottom: 36px;
   }

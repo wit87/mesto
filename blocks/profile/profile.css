@@ -1,24 +1,18 @@
 .profile {
         margin: 0 auto;
         padding-top: 51px;     
-        width: calc(100% - 400px);
+        width: calc(100% - 38px);
         display: flex;
         flex-direction: row;        
         justify-content: space-between;
         align-items: center;
       }
       
-      @media screen and (max-width: 920px) {
+         
+      @media screen and (max-width: 680px) {
       
-        .header {    
-        width: calc(100% - 40px);
-        }
-            }
-      
-      @media screen and (max-width: 648px) {
-      
-        .header {    
-        width: calc(100% -38px);
+        .profile { 
         padding-top: 36px;
+        flex-direction: column;  
         }
       }
