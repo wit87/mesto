@@ -1,4 +1,4 @@
-.profile__edit_button {
+.profile__edit-button {
         position: absolute;
         top: calc(50% - 12px);
         right: -42px;
@@ -20,7 +20,7 @@
 
 }
 
-.profile__edit_button:hover {
+.profile__edit-button:hover {
         opacity: 0.6;
         filter: alpha(opacity=60)
 }
