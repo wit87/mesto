@@ -2,40 +2,47 @@
     border: 0;
     width: 100%;
     height: 42px;
+    padding-left: 10px;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     background-color: transparent;
     margin-top: 26px;
     font-size: 14px;
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: #000;
 }
 
 /* Стилизуем плейсхолдеры */
 
-.form__item::placeholder {
+.popup__item::placeholder {
     font-size: 14px;
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
 }
 
-.form__item::-webkit-input-placeholder {
+.popup__item::-webkit-input-placeholder {
     font-size: 14px;
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
 }
 
-.form__item::-moz-placeholder {
+.popup__item::-moz-placeholder {
     font-size: 14px;
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
 }
 
-.form__item::-ms-input-placeholder {
+.popup__item::-ms-input-placeholder {
     font-size: 14px;
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
+}
+
+.popup__item:focus {
+    color: #000;
+    font-weight: 500;
 }
