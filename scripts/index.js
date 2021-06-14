@@ -2,15 +2,33 @@
 
 const popupOpenButtonElement = document.querySelector('.profile__edit-button')
 const popupElement = document.querySelector('.popup')
-const popupCloseButtonElement = document.querySelector('.popup__close-button')
+const popupCloseButtonElement = popupElement.querySelector('.popup__close-button')
+
+const profileElement = document.querySelector('.profile')
+let profileName = profileElement.querySelector('.profile__name')
+let profileJob = profileElement.querySelector('.profile__job')
+
+let popupElementNameInput = popupElement.querySelector('.popup__name')
+let popupElementJobInput = popupElement.querySelector('.popup__job')
+
+const popupSaveButtonElement = popupElement.querySelector('.popup__save-button')
 
 const openpopup = function () {
     popupElement.classList.add('popup_is-opened')
-    console.log('Open popup clicked')
 }
 
 const closepopup = function () {
     popupElement.classList.remove('popup_is-opened')
+}
+
+
+// Функция по замене текста
+const formSubmitHandler = function (evt) {
+    evt.preventDefault();
+    profileName.textContent = popupElementNameInput.value;
+    profileJob.textContent = popupElementJobInput.value;
+
+    closepopup();
 }
 
 //Функция, которая закрывает окошко по клику на затемненную область
@@ -28,6 +46,8 @@ const closepopupByClickOnOverlay = function (event) {
 popupOpenButtonElement.addEventListener('click', openpopup)
 popupCloseButtonElement.addEventListener('click', closepopup)
 popupElement.addEventListener('click', closepopupByClickOnOverlay)
+
+popupSaveButtonElement.addEventListener('click', formSubmitHandler);
 
 
 // Ффункции обратного вызова
