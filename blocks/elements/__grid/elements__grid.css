@@ -17,7 +17,7 @@
 }
 
 @media screen and (max-width: 480px) {
-            .elements__grid {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
+    .elements__grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
