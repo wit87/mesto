@@ -1,4 +1,4 @@
-.profile__cont {
+.profile__job {
     margin: 0;
     padding: 0;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 680px) {
 
-    .profile__cont {
+    .profile__job {
         text-align: center;
         font-size: 14px;
         line-height: 17px;
