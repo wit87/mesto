@@ -1,4 +1,4 @@
-.popup__input_job {
+.popup__input-job {
     border: 0;
     width: 100%;
     height: 42px;
@@ -14,35 +14,35 @@
 
 /* Стилизуем плейсхолдеры */
 
-.popup__input_job::placeholder {
+.popup__input-job::placeholder {
     font-size: 14px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
 }
 
-.popup__input_job::-webkit-input-placeholder {
+.popup__input-job::-webkit-input-placeholder {
     font-size: 14px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
 }
 
-.popup__input_job::-moz-placeholder {
+.popup__input-job::-moz-placeholder {
     font-size: 14px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
 }
 
-.popup__input_job::-ms-input-placeholder {
+.popup__input-job::-ms-input-placeholder {
     font-size: 14px;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 17px;
     color: #000;
 }
 
-.popup__input_job:focus {
+.popup__input-job:focus {
     color: #000;
     font-weight: 500;
 }

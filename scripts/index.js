@@ -2,16 +2,16 @@
 
 const popupOpenButtonElement = document.querySelector('.profile__edit-button')
 const popupElement = document.querySelector('.popup')
-const popupCloseButtonElement = popupElement.querySelector('.popup__button_close')
+const popupCloseButtonElement = popupElement.querySelector('.popup__button-close')
 
 const profileElement = document.querySelector('.profile')
 let profileName = profileElement.querySelector('.profile__name')
 let profileJob = profileElement.querySelector('.profile__job')
 
-let popupElementNameInput = popupElement.querySelector('.popup__input_name')
-let popupElementJobInput = popupElement.querySelector('.popup__input_job')
+let popupElementNameInput = popupElement.querySelector('.popup__input-name')
+let popupElementJobInput = popupElement.querySelector('.popup__input-job')
 
-const popupSaveButtonElement = popupElement.querySelector('.popup__button_save')
+const popupSaveButtonElement = popupElement.querySelector('.popup__button-save')
 
 
 
