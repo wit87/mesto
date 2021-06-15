@@ -8,8 +8,8 @@ const profileElement = document.querySelector('.profile')
 let profileName = profileElement.querySelector('.profile__name')
 let profileJob = profileElement.querySelector('.profile__job')
 
-let popupElementNameInput = popupElement.querySelector('.popup__item-name')
-let popupElementJobInput = popupElement.querySelector('.popup__item-job')
+let popupElementNameInput = popupElement.querySelector('.popup__item_name')
+let popupElementJobInput = popupElement.querySelector('.popup__item_job')
 
 const popupSaveButtonElement = popupElement.querySelector('.popup__save-button')
 
