@@ -1,6 +1,7 @@
 .profile__job {
     margin: 0;
     padding: 0;
+    width: 100%;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     font-weight: normal;
     font-size: 18px;
