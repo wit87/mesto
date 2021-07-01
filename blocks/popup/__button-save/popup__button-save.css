@@ -13,7 +13,18 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    -moz-transition: opacity 0.4s;
+    -webkit-transition: opacity 0.4s;
+    -ms-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    transition: opacity 0.4s;
 }
+
+.popup__button-save:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
 
 @media screen and (max-width: 680px) {
 

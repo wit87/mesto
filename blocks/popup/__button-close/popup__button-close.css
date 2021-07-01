@@ -18,7 +18,7 @@
     transition: opacity 0.4s;
 }
 
-.popup__butto-close:hover {
+.popup__button-close:hover {
     opacity: 0.6;
     filter: alpha(opacity=60);
 }
