@@ -34,23 +34,9 @@
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
-        <div class="popup">
-            <div class="popup__container" name="edit_form">
-                <h2 class="popup__heading">Редактировать профиль</h2>
-                <form class="popup__form" name="edit_form">
-                    <input type="text" class="popup__input popup__input_type_name" id="form_name" name="form_name"
-                        placeholder="Имя">
-                    <input type="text" class="popup__input popup__input_type_job" id="form_job" name="form_job"
-                        placeholder="Вид деятельности">
-                    <button class="popup__button-save" type="submit">Сохранить</button>
-                </form>
-                <button class="popup__button-close" type="button"></button>
-            </div>
-        </div>
-    </div>
 
     <div class="popup popup_edit">
-        <div class="popup__container" name="edit_form">
+        <div class="popup__container">
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="popup__form" name="edit_form">
                 <input type="text" class="popup__input popup__input_type_name" id="form_name" name="form_name"
@@ -64,7 +50,7 @@
     </div>
 
     <div class="popup popup_add">
-        <div class="popup__container" name="add_form">
+        <div class="popup__container">
             <h2 class="popup__heading">Новое место</h2>
             <form class="popup__form" name="add_form">
                 <input type="text" class="popup__input popup__input_type_mesto" id="form_mesto" name="form_mesto"
@@ -85,6 +71,7 @@
         </div>
     </div>
 
+</div>
     <template class="template">
         <li class="element">
             <img src=" " alt=" " class="element__image">
@@ -97,5 +84,4 @@
     </template>
     <script src="./scripts/index.js"></script>
 </body>
-
 </html>
