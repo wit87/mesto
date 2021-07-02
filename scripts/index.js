@@ -73,7 +73,7 @@ const initialCards = [{
         link: './images/mesto/moskovsky-kreml-1.jpg'
     },
     {
-        name: 'Храм Христа Спасителяя',
+        name: 'Храм Христа Спасителя',
         link: './images/mesto/hram-hrista.jpg'
     },
     {
@@ -101,10 +101,10 @@ const cardCase = document.querySelector('.elements__grid')
 const imagePopup = document.querySelector('.popup_image')
 const  imageElement = imagePopup.querySelector('.popup__image')
 const  imageCaption = imagePopup.querySelector('.popup__image-title')
-const popupCloseimagePopup = imagePopup.querySelector('.popup__button-close')
+const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 
 // Открыть окно с картинкой функция
-function openimagePopup(event) {
+function openImagePopup(event) {
     const clickElement = event.target.closest(".element__image");
     imagePopup.classList.add('popup_is-opened');
     imageElement.src = clickElement.src;
@@ -113,21 +113,21 @@ function openimagePopup(event) {
 };
 
 // Закрыть окно с картинкой
-const closeimagePopup = function () {
+const closeImagePopup = function () {
     imagePopup.classList.remove('popup_is-opened')
 }
 
-const closeimagePopupByClickOnOverlay = function (event) {
+const closeImagePopupByClickOnOverlay = function (event) {
     console.log(event.target, event.currentTarget)
     if (event.target !== event.currentTarget) {
         return
     }
-    closeimagePopup()
+    closeImagePopup()
 }
 
 //Закрытие окна добавления обработчики
-popupCloseimagePopup.addEventListener('click', () => closeimagePopup(imagePopup));
-imagePopup.addEventListener('click', closeimagePopupByClickOnOverlay);
+popupCloseImagePopup.addEventListener('click', () => closeImagePopup(imagePopup));
+imagePopup.addEventListener('click', closeImagePopupByClickOnOverlay);
 
 function getCard(name, link) {
     const createCard = cardTemplate.querySelector('.element').cloneNode(true);
@@ -151,7 +151,7 @@ function getCard(name, link) {
     });
 
     // Открытие картинок
-    cardImage.addEventListener('click', openimagePopup);
+    cardImage.addEventListener('click', openImagePopup);
 
     return createCard;
 }
