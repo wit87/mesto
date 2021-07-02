@@ -20,20 +20,19 @@ const popupFormElementAdd = popupElementAdd.querySelector('.popup__form')
 const popupCloseCardAddElement = popupElementAdd.querySelector('.popup__button-close')
 const popupSaveButtonElementAdd = popupElementAdd.querySelector('.popup__button-save')
 
-// Открыть всплывающее окно
+// Открыть всплывающее окно редактирование профиля
 const openPopup = function () {
     popupElement.classList.add('popup_is-opened')
     popupElementNameInput.value = profileName.textContent;
     popupElementJobInput.value = profileJob.textContent;
 }
 
-// Закрыть всплывающее окно
+// Закрыть всплывающее окно  редактирование профиля
 const closePopup = function () {
     popupElement.classList.remove('popup_is-opened')
 }
 
-
-// Функция по замене текста
+// Функция по замене текста  редактирование профиля
 const formSubmitHandler = function (evt) {
     evt.preventDefault();
     profileName.textContent = popupElementNameInput.value;
@@ -51,7 +50,7 @@ const closePopupByClickOnOverlay = function (event) {
     closePopup()
 }
 
-// Регистрируем обработчики событий по клику
+// Регистрируем обработчики событий по клику редактирование профиля
 popupOpenButtonElement.addEventListener('click', openPopup)
 popupCloseButtonElement.addEventListener('click', closePopup)
 popupElement.addEventListener('click', closePopupByClickOnOverlay)
@@ -96,11 +95,39 @@ const initialCards = [{
 ];
 
 // Делаем выборку DOM элементов
-const cardTemplate = document.querySelector('.template').content;
-const cardCase = document.querySelector('.elements__grid');
-let imagePopup = document.querySelector('.popup_image')
-let imageElement = imagePopup.querySelector('.popup__image');
-let imageCaption = imagePopup.querySelector('.popup__image-title');
+const cardTemplate = document.querySelector('.template').content
+const cardCase = document.querySelector('.elements__grid')
+
+const imagePopup = document.querySelector('.popup_image')
+const  imageElement = imagePopup.querySelector('.popup__image')
+const  imageCaption = imagePopup.querySelector('.popup__image-title')
+const popupCloseimagePopup = imagePopup.querySelector('.popup__button-close')
+
+// Открыть окно с картинкой функция
+function openimagePopup(event) {
+    const clickElement = event.target.closest(".element__image");
+    imagePopup.classList.add('popup_is-opened');
+    imageElement.src = clickElement.src;
+    imageElement.alt = clickElement.alt;
+    imageCaption.textContent = clickElement.alt;
+};
+
+// Закрыть окно с картинкой
+const closeimagePopup = function () {
+    imagePopup.classList.remove('popup_is-opened')
+}
+
+const closeimagePopupByClickOnOverlay = function (event) {
+    console.log(event.target, event.currentTarget)
+    if (event.target !== event.currentTarget) {
+        return
+    }
+    closeimagePopup()
+}
+
+//Закрытие окна добавления обработчики
+popupCloseimagePopup.addEventListener('click', () => closeimagePopup(imagePopup));
+imagePopup.addEventListener('click', closeimagePopupByClickOnOverlay);
 
 function getCard(name, link) {
     const createCard = cardTemplate.querySelector('.element').cloneNode(true);
@@ -117,16 +144,14 @@ function getCard(name, link) {
         cardLikeButton.classList.toggle('element__button-like_active');
     });
 
-    // // Открытие картинок
-    // cardImage.addEventListener('click', () => {
-    //     handlePreviewImage(data);
-    // });
-
-    // Удаление карточки
+        // Удаление карточки
     cardDeleteButton.addEventListener('click', function (evt) {
         const evtTarget = evt.target
         evtTarget.closest('.element').remove();
     });
+
+    // Открытие картинок
+    cardImage.addEventListener('click', openimagePopup);
 
     return createCard;
 }
@@ -134,13 +159,6 @@ function getCard(name, link) {
 initialCards.forEach(function (el) {
     cardCase.append(getCard(el.name, el.link));
 });
-
-
-
-// Создание новой карточки
-//Открытие и закрытие окна добавления
-popupOpenButtonElementAdd.addEventListener('click', () => openPopupAdd(popupElementAdd));
-popupCloseCardAddElement.addEventListener('click', () => closePopupAdd(popupElementAdd));
 
 // Открыть всплывающее окно
 const openPopupAdd = function () {
@@ -151,32 +169,34 @@ const openPopupAdd = function () {
 const closePopupAdd = function () {
     popupElementAdd.classList.remove('popup_is-opened')
 }
-
-// Добавление нового элемента
-const addNewElement = (evt) => {
-    evt.preventDefault();    
-    if (newMestoElement.value === null || newLinkElement.value === null) {
-        closePopupAdd(popupElementAdd);
-    } else
-    {
-    const newMesto = newMestoElement.value;
-    const newLink = newLinkElement.value;
-    cardCase.prepend(getCard(newMesto, newLink));
-    closePopupAdd(popupElementAdd);
-    newMestoElement.value = "";
-    newLinkElement.value = "";}
+const closePopupAddByClickOnOverlay = function (event) {
+    console.log(event.target, event.currentTarget)
+    if (event.target !== event.currentTarget) {
+        return
+    }
+    closePopupAdd()
 }
 
+//Открытие и закрытие окна добавления обработчики
+popupOpenButtonElementAdd.addEventListener('click', () => openPopupAdd(popupElementAdd));
+popupCloseCardAddElement.addEventListener('click', () => closePopupAdd(popupElementAdd));
+popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay)
+
+
+// Создание новой карточки
+const addNewElement = (evt) => {
+    evt.preventDefault();
+    if (newMestoElement.value !== "" || newLinkElement.value !== "") {
+        const newMesto = newMestoElement.value;
+        const newLink = newLinkElement.value;
+        cardCase.prepend(getCard(newMesto, newLink));
+        closePopupAdd(popupElementAdd);
+        newMestoElement.value = "";
+        newLinkElement.value = "";
+    } else {
+        closePopupAdd(popupElementAdd);
+    }
+}
+
+// Функция сохранения
 popupFormElementAdd.addEventListener('submit', addNewElement)
-
-
-const getCards = (data) => {
-    placesItemImage.addEventListener('click', () => handlePreviewImage(data));
-      }
-
-  const handlePreviewImage = (data) => {
-    imageElement.src = data.link;
-    imageElement.alt = data.name;
-    imageCaption.textContent = data.name;
-    imagePopup.classList.toggle('popup_is-opened');
-  };
