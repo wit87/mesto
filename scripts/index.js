@@ -1,72 +1,3 @@
-// Делаем выборку DOM элементов
-
-const profileElement = document.querySelector('.profile')
-const popupOpenButtonElement = profileElement.querySelector('.profile__edit-button')
-const profileName = profileElement.querySelector('.profile__name')
-const profileJob = profileElement.querySelector('.profile__job')
-const popupOpenButtonElementAdd = profileElement.querySelector('.profile__add-button')
-
-const popupElement = document.querySelector('.popup_edit')
-const popupElementNameInput = popupElement.querySelector('.popup__input_type_name')
-const popupElementJobInput = popupElement.querySelector('.popup__input_type_job')
-const popupFormElement = popupElement.querySelector('.popup__form')
-const popupSaveButtonElement = popupElement.querySelector('.popup__button-save')
-const popupCloseButtonElement = popupElement.querySelector('.popup__button-close')
-
-const popupElementAdd = document.querySelector('.popup_add')
-const newMestoElement = popupElementAdd.querySelector('.popup__input_type_mesto')
-const newLinkElement = popupElementAdd.querySelector('.popup__input_type_link')
-const popupFormElementAdd = popupElementAdd.querySelector('.popup__form')
-const popupCloseCardAddElement = popupElementAdd.querySelector('.popup__button-close')
-const popupSaveButtonElementAdd = popupElementAdd.querySelector('.popup__button-save')
-
-// Открыть всплывающее окно редактирование профиля
-const openPopup = function () {
-    popupElement.classList.add('popup_is-opened')
-    popupElementNameInput.value = profileName.textContent;
-    popupElementJobInput.value = profileJob.textContent;
-}
-
-// Закрыть всплывающее окно  редактирование профиля
-const closePopup = function () {
-    popupElement.classList.remove('popup_is-opened')
-}
-
-// Функция по замене текста  редактирование профиля
-const formSubmitHandler = function (evt) {
-    evt.preventDefault();
-    profileName.textContent = popupElementNameInput.value;
-    profileJob.textContent = popupElementJobInput.value;
-    closePopup();
-}
-
-//Функция, которая закрывает окошко по клику на затемненную область
-
-const closePopupByClickOnOverlay = function (event) {
-    console.log(event.target, event.currentTarget)
-    if (event.target !== event.currentTarget) {
-        return
-    }
-    closePopup()
-}
-
-// Регистрируем обработчики событий по клику редактирование профиля
-popupOpenButtonElement.addEventListener('click', openPopup)
-popupCloseButtonElement.addEventListener('click', closePopup)
-popupElement.addEventListener('click', closePopupByClickOnOverlay)
-popupFormElement.addEventListener('submit', formSubmitHandler)
-
-// Функции обратного вызова
-const addEventListener = function (type, callback) {
-    console.log(type)
-    const event = {
-        target: '',
-        currentTarget: ''
-    }
-    callback(event)
-}
-
-
 // Массив карточек
 const initialCards = [{
         name: 'Московский Кремль',
@@ -95,40 +26,36 @@ const initialCards = [{
 ];
 
 // Делаем выборку DOM элементов
+
+const profileElement = document.querySelector('.profile')
+const popupOpenButtonElement = profileElement.querySelector('.profile__edit-button')
+const profileName = profileElement.querySelector('.profile__name')
+const profileJob = profileElement.querySelector('.profile__job')
+const popupOpenButtonElementAdd = profileElement.querySelector('.profile__add-button')
+
+const popupElement = document.querySelector('.popup_edit')
+const popupElementNameInput = popupElement.querySelector('.popup__input_type_name')
+const popupElementJobInput = popupElement.querySelector('.popup__input_type_job')
+const popupFormElement = popupElement.querySelector('.popup__form')
+const popupSaveButtonElement = popupElement.querySelector('.popup__button-save')
+const popupCloseButtonElement = popupElement.querySelector('.popup__button-close')
+
+const popupElementAdd = document.querySelector('.popup_add')
+const newMestoElement = popupElementAdd.querySelector('.popup__input_type_mesto')
+const newLinkElement = popupElementAdd.querySelector('.popup__input_type_link')
+const popupFormElementAdd = popupElementAdd.querySelector('.popup__form')
+const popupCloseCardAddElement = popupElementAdd.querySelector('.popup__button-close')
+const popupSaveButtonElementAdd = popupElementAdd.querySelector('.popup__button-save')
+
 const cardTemplate = document.querySelector('.template').content
 const cardCase = document.querySelector('.elements__grid')
 
 const imagePopup = document.querySelector('.popup_image')
-const  imageElement = imagePopup.querySelector('.popup__image')
-const  imageCaption = imagePopup.querySelector('.popup__image-title')
+const imageElement = imagePopup.querySelector('.popup__image')
+const imageCaption = imagePopup.querySelector('.popup__image-title')
 const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 
-// Открыть окно с картинкой функция
-function openImagePopup(event) {
-    const clickElement = event.target.closest(".element__image");
-    imagePopup.classList.add('popup_is-opened');
-    imageElement.src = clickElement.src;
-    imageElement.alt = clickElement.alt;
-    imageCaption.textContent = clickElement.alt;
-};
-
-// Закрыть окно с картинкой
-const closeImagePopup = function () {
-    imagePopup.classList.remove('popup_is-opened')
-}
-
-const closeImagePopupByClickOnOverlay = function (event) {
-    console.log(event.target, event.currentTarget)
-    if (event.target !== event.currentTarget) {
-        return
-    }
-    closeImagePopup()
-}
-
-//Закрытие окна добавления обработчики
-popupCloseImagePopup.addEventListener('click', () => closeImagePopup(imagePopup));
-imagePopup.addEventListener('click', closeImagePopupByClickOnOverlay);
-
+//Создание карточек
 function getCard(name, link) {
     const createCard = cardTemplate.querySelector('.element').cloneNode(true);
     const cardText = createCard.querySelector('.element__title');
@@ -144,7 +71,7 @@ function getCard(name, link) {
         cardLikeButton.classList.toggle('element__button-like_active');
     });
 
-        // Удаление карточки
+    // Удаление карточки
     cardDeleteButton.addEventListener('click', function (evt) {
         const evtTarget = evt.target
         evtTarget.closest('.element').remove();
@@ -161,27 +88,63 @@ initialCards.forEach(function (el) {
 });
 
 // Открыть всплывающее окно
-const openPopupAdd = function () {
-    popupElementAdd.classList.add('popup_is-opened')
+function openPopup(popup) {
+    popup.classList.add('popup_is-opened')
 }
 
-// Закрыть всплывающее окно
-const closePopupAdd = function () {
-    popupElementAdd.classList.remove('popup_is-opened')
+// Закрыть всплывающее окно 
+function closePopup(popup) {
+    popup.classList.remove('popup_is-opened')
 }
+
+// // Открыть всплывающее окно редактирование профиля
+const openProfilePopup = function () {
+    openPopup(popupElement);
+    popupElementNameInput.value = profileName.textContent;
+    popupElementJobInput.value = profileJob.textContent;
+}
+
+// Функция по замене текста  редактирование профиля
+const formSubmitHandler = function (evt) {
+    evt.preventDefault();
+    profileName.textContent = popupElementNameInput.value;
+    profileJob.textContent = popupElementJobInput.value;
+    closePopup(popupElement);
+}
+
+// Открыть окно с картинкой функция
+function openImagePopup(event) {
+    const clickElement = event.target.closest(".element__image");
+    imagePopup.classList.add('popup_is-opened');
+    imageElement.src = clickElement.src;
+    imageElement.alt = clickElement.alt;
+    imageCaption.textContent = clickElement.alt;
+};
+
+//Функции, которые закрывают окошко по клику на затемненную область
+const closePopupByClickOnOverlay = function (event) {
+    console.log(event.target, event.currentTarget)
+    if (event.target !== event.currentTarget) {
+        return
+    }
+    closePopup(popupElement)
+}
+
 const closePopupAddByClickOnOverlay = function (event) {
     console.log(event.target, event.currentTarget)
     if (event.target !== event.currentTarget) {
         return
     }
-    closePopupAdd()
+    closePopup(popupElementAdd)
 }
 
-//Открытие и закрытие окна добавления обработчики
-popupOpenButtonElementAdd.addEventListener('click', () => openPopupAdd(popupElementAdd));
-popupCloseCardAddElement.addEventListener('click', () => closePopupAdd(popupElementAdd));
-popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay)
-
+const closeImagePopupByClickOnOverlay = function (event) {
+    console.log(event.target, event.currentTarget)
+    if (event.target !== event.currentTarget) {
+        return
+    }
+    closePopup(imagePopup)
+}
 
 // Создание новой карточки
 const addNewElement = (evt) => {
@@ -190,13 +153,28 @@ const addNewElement = (evt) => {
         const newMesto = newMestoElement.value;
         const newLink = newLinkElement.value;
         cardCase.prepend(getCard(newMesto, newLink));
-        closePopupAdd(popupElementAdd);
+        closePopup(popupElementAdd);
         newMestoElement.value = "";
         newLinkElement.value = "";
     } else {
-        closePopupAdd(popupElementAdd);
+        closePopup(popupElementAdd)
     }
 }
 
-// Функция сохранения
+// Регистрируем обработчики событий по клику
+// редактирование профиля
+popupOpenButtonElement.addEventListener('click', openProfilePopup)
+popupCloseButtonElement.addEventListener('click', () => closePopup(popupElement))
+popupElement.addEventListener('click', closePopupByClickOnOverlay)
+popupFormElement.addEventListener('submit', formSubmitHandler)
+
+// добавление нового элемента
+popupOpenButtonElementAdd.addEventListener('click', () => openPopup(popupElementAdd))
+popupCloseCardAddElement.addEventListener('click', () => closePopup(popupElementAdd))
+popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay)
 popupFormElementAdd.addEventListener('submit', addNewElement)
+
+// открытие изображения
+popupCloseImagePopup.addEventListener('click', () => closePopup(imagePopup))
+imagePopup.addEventListener('click', closeImagePopupByClickOnOverlay)
+
