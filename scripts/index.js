@@ -97,7 +97,7 @@ function closePopup(popup) {
     popup.classList.remove('popup_is-opened')
 }
 
-// // Открыть всплывающее окно редактирование профиля
+// Открыть всплывающее окно редактирование профиля
 const openProfilePopup = function () {
     openPopup(popupElement);
     popupElementNameInput.value = profileName.textContent;
