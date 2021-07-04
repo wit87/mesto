@@ -115,7 +115,7 @@ const formSubmitHandler = function (evt) {
 // Открыть окно с картинкой функция
 function openImagePopup(event) {
     const clickElement = event.target.closest(".element__image");
-    imagePopup.classList.add('popup_is-opened');
+    openPopup(imagePopup);
     imageElement.src = clickElement.src;
     imageElement.alt = clickElement.alt;
     imageCaption.textContent = clickElement.alt;
