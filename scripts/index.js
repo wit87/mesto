@@ -26,7 +26,6 @@ const initialCards = [{
 ];
 
 // Делаем выборку DOM элементов
-
 const profileElement = document.querySelector('.profile')
 const popupOpenButtonElement = profileElement.querySelector('.profile__edit-button')
 const profileName = profileElement.querySelector('.profile__name')
@@ -54,6 +53,7 @@ const imagePopup = document.querySelector('.popup_image')
 const imageElement = imagePopup.querySelector('.popup__image')
 const imageCaption = imagePopup.querySelector('.popup__image-title')
 const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
+
 
 //Создание карточек
 function getCard(name, link) {
@@ -87,15 +87,18 @@ initialCards.forEach(function (el) {
     cardCase.append(getCard(el.name, el.link));
 });
 
+
 // Открыть всплывающее окно
 function openPopup(popup) {
     popup.classList.add('popup_is-opened')
 }
 
+
 // Закрыть всплывающее окно 
 function closePopup(popup) {
     popup.classList.remove('popup_is-opened')
 }
+
 
 // Открыть всплывающее окно редактирование профиля
 const openProfilePopup = function () {
@@ -104,6 +107,7 @@ const openProfilePopup = function () {
     popupElementJobInput.value = profileJob.textContent;
 }
 
+
 // Функция по замене текста  редактирование профиля
 const formSubmitHandler = function (evt) {
     evt.preventDefault();
@@ -111,6 +115,7 @@ const formSubmitHandler = function (evt) {
     profileJob.textContent = popupElementJobInput.value;
     closePopup(popupElement);
 }
+
 
 // Открыть окно с картинкой функция
 function openImagePopup(event) {
@@ -121,30 +126,31 @@ function openImagePopup(event) {
     imageCaption.textContent = clickElement.alt;
 };
 
-//Функции, которые закрывают окошко по клику на затемненную область
-const closePopupByClickOnOverlay = function (event) {
-    console.log(event.target, event.currentTarget)
-    if (event.target !== event.currentTarget) {
-        return
-    }
-    closePopup(popupElement)
+
+//закрытие окона по клику на затемненную область
+const popups = document.querySelectorAll('.popup')
+
+const closePopupByClickOnOverlay = function () {
+    popups.forEach((popup) => {
+        popup.addEventListener('click', (evt) => {
+            if (evt.target.classList.contains('popup_is-opened')) {
+                closePopup(popup)
+            }
+        })
+    })
 }
 
-const closePopupAddByClickOnOverlay = function (event) {
-    console.log(event.target, event.currentTarget)
-    if (event.target !== event.currentTarget) {
-        return
-    }
-    closePopup(popupElementAdd)
-}
 
-const closeImagePopupByClickOnOverlay = function (event) {
-    console.log(event.target, event.currentTarget)
-    if (event.target !== event.currentTarget) {
-        return
-    }
-    closePopup(imagePopup)
-}
+//закрытие окона по клику на Esc
+const activePopup = document.querySelector('.popup_is-opened');
+document.addEventListener('keyup', (event) => { 
+    if (event.key === 'Escape') { 
+        popups.forEach( (popup) => { 
+            popup.classList.remove('popup_is-opened'); 
+        }) 
+    } 
+})
+
 
 // Создание новой карточки
 const addNewElement = (evt) => {
@@ -171,10 +177,10 @@ popupFormElement.addEventListener('submit', formSubmitHandler)
 // добавление нового элемента
 popupOpenButtonElementAdd.addEventListener('click', () => openPopup(popupElementAdd))
 popupCloseCardAddElement.addEventListener('click', () => closePopup(popupElementAdd))
-popupElementAdd.addEventListener('click', closePopupAddByClickOnOverlay)
+popupElementAdd.addEventListener('click', closePopupByClickOnOverlay)
 popupFormElementAdd.addEventListener('submit', addNewElement)
 
 // открытие изображения
 popupCloseImagePopup.addEventListener('click', () => closePopup(imagePopup))
-imagePopup.addEventListener('click', closeImagePopupByClickOnOverlay)
+imagePopup.addEventListener('click', closePopupByClickOnOverlay)
 
