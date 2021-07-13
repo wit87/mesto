@@ -1,4 +1,4 @@
-.popup__input:not(:focus):valid {
+.popup__input_valid {
   border-bottom: 1px solid #68d391;
   color: #68d391;
   outline: none;
