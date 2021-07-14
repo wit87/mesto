@@ -162,6 +162,8 @@ document.addEventListener('keyup', (event) => {
 // Создание новой карточки
 const addNewElement = (evt) => {
     evt.preventDefault();
+    popupSaveButtonElementAdd.classList.add('popup__button-save_disabled');
+
     if (newMestoElement.value !== "" || newLinkElement.value !== "") {
         const newMesto = newMestoElement.value;
         const newLink = newLinkElement.value;
