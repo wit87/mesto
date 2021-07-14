@@ -116,6 +116,13 @@ const formSubmitHandler = function (evt) {
     closePopup(popupElement);
 }
 
+//добавляем карточку на Enter
+function keySubmitHandler(evt) {
+    if (evt.key === 'Enter') {
+        formSubmitHandler(popupElementNameInput.value, popupElementJobInput.value);
+    }        
+}
+
 
 // Открыть окно с картинкой функция
 function openImagePopup(event) {
@@ -166,6 +173,15 @@ const addNewElement = (evt) => {
         closePopup(popupElementAdd)
     }
 }
+
+//добавляем карточку на Enter
+    function keyHandler(evt) {
+        if (evt.key === 'Enter') {
+            addNewElement(newMestoElement.value, newLinkElement.value);
+        }        
+    }
+
+
 
 // Регистрируем обработчики событий по клику
 // редактирование профиля
