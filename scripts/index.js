@@ -30,11 +30,11 @@ const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 
 //Создание карточек
 function getCard(name, link) {
-    const createCard = cardTemplate.querySelector('.element').cloneNode(true);
-    const cardText = createCard.querySelector('.element__title');
-    const cardImage = createCard.querySelector('.element__image');
-    const cardLikeButton = createCard.querySelector('.element__button-like');
-    const cardDeleteButton = createCard.querySelector('.element__button-delete');
+    const newCard = cardTemplate.querySelector('.element').cloneNode(true);
+    const cardText = newCard.querySelector('.element__title');
+    const cardImage = newCard.querySelector('.element__image');
+    const cardLikeButton = newCard.querySelector('.element__button-like');
+    const cardDeleteButton = newCard.querySelector('.element__button-delete');
     cardText.textContent = name;
     cardImage.src = link;
     cardImage.alt = name;
@@ -53,7 +53,7 @@ function getCard(name, link) {
     // Открытие картинок
     cardImage.addEventListener('click', openImagePopup);
 
-    return createCard;
+    return newCard;
 }
 
 initialCards.forEach(function (el) {
@@ -128,7 +128,7 @@ document.addEventListener('keyup', (event) => {
 // Создание новой карточки
 const addNewElement = (evt) => {
     evt.preventDefault();
-    
+
     popupSaveButtonElementAdd.setAttribute("disabled", true);
     popupSaveButtonElementAdd.classList.add(validationConfig.inactiveButtonClass);
 
