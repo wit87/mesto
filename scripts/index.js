@@ -78,7 +78,7 @@ function closePopup(popup) {
 function handleEsc(event) {
         if (event.key === 'Escape') {
             popups.forEach((popup) => {
-                closePopup(popup);
+                closePopup(document.querySelector('.popup_is-opened')); 
             })
         }
     }
