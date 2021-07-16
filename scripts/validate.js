@@ -94,7 +94,6 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
     formList.forEach((formElement) => {
       setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass, popupSection, errorBox);
     });
-  };
-
+  };  
  
 enableValidation(validationConfig);

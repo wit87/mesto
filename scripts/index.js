@@ -135,8 +135,7 @@ const addNewElement = (evt) => {
     const newLink = newLinkElement.value;
     cardCase.prepend(getCard(newMesto, newLink));
     closePopup(popupElementAdd);
-    newMestoElement.value = "";
-    newLinkElement.value = "";
+    popupFormElementAdd.reset();
 }
 
 // Регистрируем обработчики событий по клику
