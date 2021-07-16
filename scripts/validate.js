@@ -96,5 +96,5 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
     });
   };
 
-  
+ 
 enableValidation(validationConfig);

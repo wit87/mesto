@@ -63,15 +63,25 @@ initialCards.forEach(function (el) {
 
 // Открыть всплывающее окно
 function openPopup(popup) {
-    popup.classList.add('popup_is-opened')
-
+    popup.classList.add('popup_is-opened');
+    document.addEventListener('keyup', handleEsc)
 }
 
 
 // Закрыть всплывающее окно 
 function closePopup(popup) {
-    popup.classList.remove('popup_is-opened')
+    popup.classList.remove('popup_is-opened');
+    document.removeEventListener('keyup', handleEsc)
 }
+
+// Закрытие окона по клику на Esc
+function handleEsc(event) {
+        if (event.key === 'Escape') {
+            popups.forEach((popup) => {
+                popup.classList.remove('popup_is-opened');
+            })
+        }
+    }
 
 
 // Открыть всплывающее окно редактирование профиля
@@ -112,17 +122,6 @@ const closePopupByClickOnOverlay = function () {
         })
     })
 }
-
-
-//закрытие окона по клику на Esc
-const activePopup = document.querySelector('.popup_is-opened');
-document.addEventListener('keyup', (event) => {
-    if (event.key === 'Escape') {
-        popups.forEach((popup) => {
-            popup.classList.remove('popup_is-opened');
-        })
-    }
-})
 
 
 // Создание новой карточки
