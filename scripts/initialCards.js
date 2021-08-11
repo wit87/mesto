@@ -24,3 +24,5 @@ const initialCards = [{
     link: './images/mesto/pskovskiy_kreml_4.jpg'
 }
 ];
+
+export default initialCards;

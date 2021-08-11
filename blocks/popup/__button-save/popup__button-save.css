@@ -23,6 +23,20 @@
     transition: opacity 0.4s;
 }
 
+.popup__button-save:disabled {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .5);
+    color: #000;
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+    -moz-transition: opacity 0.4s;
+    -webkit-transition: opacity 0.4s;
+    -ms-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+  }
+
 .popup__button-save:hover {
     opacity: 0.5;
     filter: alpha(opacity=50);

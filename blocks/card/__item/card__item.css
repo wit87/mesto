@@ -1,4 +1,4 @@
-.element__item {
+.card__item {
     min-height: 79px;
     display: flex;
     flex-direction: row;

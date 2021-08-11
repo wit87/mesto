@@ -1,3 +1,16 @@
+import initialCards from './initialCards.js'
+import validationConfig from './validationConfig.js'
+import FormValidator from './FormValidator.js';
+import Card from './Card.js'
+
+const formProfile = document.querySelector('.form-edit');
+const formCard = document.querySelector('.form-create');
+const validationFormProfile = new FormValidator(validationConfig, formProfile);
+const validationFormCard = new FormValidator(validationConfig, formCard);
+validationFormProfile.enableValidation();
+validationFormCard.enableValidation();
+
+
 // Делаем выборку DOM элементов
 const profileElement = document.querySelector('.profile')
 const popupOpenButtonElement = profileElement.querySelector('.profile__edit-button')
@@ -17,49 +30,18 @@ const newMestoElement = popupElementAdd.querySelector('.popup__input_type_mesto'
 const newLinkElement = popupElementAdd.querySelector('.popup__input_type_link')
 const popupFormElementAdd = popupElementAdd.querySelector('.popup__form')
 const popupCloseCardAddElement = popupElementAdd.querySelector('.popup__button-close')
-const popupSaveButtonElementAdd = popupElementAdd.querySelector('.popup__button-save')
-
-const cardTemplate = document.querySelector('.template').content
-const cardCase = document.querySelector('.elements__grid')
+const cardCase = document.querySelector('.cards__grid')
 
 const imagePopup = document.querySelector('.popup_image')
-const imageElement = imagePopup.querySelector('.popup__image')
-const imageCaption = imagePopup.querySelector('.popup__image-title')
 const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 
 
+
 //Создание карточек
-function getCard(name, link) {
-    const newCard = cardTemplate.querySelector('.element').cloneNode(true);
-    const cardText = newCard.querySelector('.element__title');
-    const cardImage = newCard.querySelector('.element__image');
-    const cardLikeButton = newCard.querySelector('.element__button-like');
-    const cardDeleteButton = newCard.querySelector('.element__button-delete');
-    cardText.textContent = name;
-    cardImage.src = link;
-    cardImage.alt = name;
-
-    // Функция лайков на карточках
-    cardLikeButton.addEventListener('click', () => {
-        cardLikeButton.classList.toggle('element__button-like_active');
-    });
-
-    // Удаление карточки
-    cardDeleteButton.addEventListener('click', function (evt) {
-        const evtTarget = evt.target
-        evtTarget.closest('.element').remove();
-    });
-
-    // Открытие картинок
-    cardImage.addEventListener('click', openImagePopup);
-
-    return newCard;
-}
-
 initialCards.forEach(function (el) {
-    cardCase.append(getCard(el.name, el.link));
-});
-
+    const card = new Card(el.name, el.link, '.template', handleCardClick)
+    cardCase.append(card.generateCard());
+})
 
 // Открыть всплывающее окно
 function openPopup(popup) {
@@ -81,8 +63,7 @@ function handleEsc(event) {
                 closePopup(document.querySelector('.popup_is-opened')); 
             })
         }
-    }
-
+   }
 
 // Открыть всплывающее окно редактирование профиля
 const openProfilePopup = function () {
@@ -101,14 +82,14 @@ const handleProfileSubmit = function (evt) {
 }
 
 // Открыть окно с картинкой функция
-function openImagePopup(event) {
-    const clickElement = event.target.closest(".element__image");
+function handleCardClick(name, link) {
+    const viewImage = document.querySelector('.popup__image');
+    const viewTitle = document.querySelector('.popup__image-title');
+    viewImage.src = link;
+    viewImage.alt = name;
+    viewTitle.textContent = name;
     openPopup(imagePopup);
-    imageElement.src = clickElement.src;
-    imageElement.alt = clickElement.alt;
-    imageCaption.textContent = clickElement.alt;
 };
-
 
 //закрытие окона по клику на затемненную область
 const popups = document.querySelectorAll('.popup')
@@ -123,20 +104,16 @@ const closePopupByClickOnOverlay = function () {
     })
 }
 
-
 // Создание новой карточки
 const addNewElement = (evt) => {
-    evt.preventDefault();
-
-    popupSaveButtonElementAdd.setAttribute("disabled", true);
-    popupSaveButtonElementAdd.classList.add(validationConfig.inactiveButtonClass);
-
+    evt.preventDefault()
     const newMesto = newMestoElement.value;
     const newLink = newLinkElement.value;
-    cardCase.prepend(getCard(newMesto, newLink));
+    const newCard = new Card(newMesto, newLink, '.template')
+    cardCase.prepend(newCard.generateCard());
     closePopup(popupElementAdd);
     popupFormElementAdd.reset();
-}
+};
 
 // Регистрируем обработчики событий по клику
 // редактирование профиля
