@@ -22,13 +22,13 @@ const popupElementEdit = document.querySelector('.popup_edit')
 const popupElementNameInput = popupElementEdit.querySelector('.popup__input_type_name')
 const popupElementJobInput = popupElementEdit.querySelector('.popup__input_type_job')
 const popupFormElement = popupElementEdit.querySelector('.popup__form')
-const popupSaveButtonElement = popupElementEdit.querySelector('.popup__button-save')
 const popupCloseButtonElement = popupElementEdit.querySelector('.popup__button-close')
 
 const popupElementAdd = document.querySelector('.popup_add')
 const newMestoElement = popupElementAdd.querySelector('.popup__input_type_mesto')
 const newLinkElement = popupElementAdd.querySelector('.popup__input_type_link')
 const popupFormElementAdd = popupElementAdd.querySelector('.popup__form')
+const popupSaveButtonElementAdd = popupElementAdd.querySelector('.popup__button-save')
 const popupCloseCardAddElement = popupElementAdd.querySelector('.popup__button-close')
 const cardCase = document.querySelector('.cards__grid')
 
@@ -107,6 +107,7 @@ const closePopupByClickOnOverlay = function () {
 // Создание новой карточки
 const addNewElement = (evt) => {
     evt.preventDefault()
+    popupSaveButtonElementAdd.setAttribute("disabled", true);
     const newMesto = newMestoElement.value;
     const newLink = newLinkElement.value;
     const newCard = new Card(newMesto, newLink, '.template')
