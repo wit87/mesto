@@ -3,10 +3,13 @@ import validationConfig from './validationConfig.js'
 import FormValidator from './FormValidator.js';
 import Card from './Card.js'
 
+//Валидация
 const formProfile = document.querySelector('.form-edit');
 const formCard = document.querySelector('.form-create');
+
 const validationFormProfile = new FormValidator(validationConfig, formProfile);
 const validationFormCard = new FormValidator(validationConfig, formCard);
+
 validationFormProfile.enableValidation();
 validationFormCard.enableValidation();
 
@@ -35,13 +38,30 @@ const cardCase = document.querySelector('.cards__grid')
 const imagePopup = document.querySelector('.popup_image')
 const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 
+// создание карточки
 
+const createCard = (data, wrap) => {
+    const card = new Card(data.name, data.link, '.template', handleCardClick)
+    wrap.append(card.generateCard());
+}
 
 //Создание карточек
 initialCards.forEach(function (el) {
-    const card = new Card(el.name, el.link, '.template', handleCardClick)
-    cardCase.append(card.generateCard());
+    createCard(el, cardCase)
 })
+
+// Создание новой карточки
+const addNewElement = (evt) => {
+    evt.preventDefault()
+    popupSaveButtonElementAdd.setAttribute("disabled", true);
+    createCard({
+        name: newMestoElement.value,
+        link: newLinkElement.value
+    }, cardCase);
+
+    closePopup(popupElementAdd);
+    popupFormElementAdd.reset();
+};
 
 // Открыть всплывающее окно
 function openPopup(popup) {
@@ -58,12 +78,12 @@ function closePopup(popup) {
 
 // Закрытие окона по клику на Esc
 function handleEsc(event) {
-        if (event.key === 'Escape') {
-            popups.forEach((popup) => {
-                closePopup(document.querySelector('.popup_is-opened')); 
-            })
-        }
-   }
+    if (event.key === 'Escape' || evt.key === 'Esc') {
+        const activePopup = document.querySelector('.popup_is-opened');
+        closePopup(activePopup);
+
+    }
+}
 
 // Открыть всплывающее окно редактирование профиля
 const openProfilePopup = function () {
@@ -103,18 +123,6 @@ const closePopupByClickOnOverlay = function () {
         })
     })
 }
-
-// Создание новой карточки
-const addNewElement = (evt) => {
-    evt.preventDefault()
-    popupSaveButtonElementAdd.setAttribute("disabled", true);
-    const newMesto = newMestoElement.value;
-    const newLink = newLinkElement.value;
-    const newCard = new Card(newMesto, newLink, '.template')
-    cardCase.prepend(newCard.generateCard());
-    closePopup(popupElementAdd);
-    popupFormElementAdd.reset();
-};
 
 // Регистрируем обработчики событий по клику
 // редактирование профиля

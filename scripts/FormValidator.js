@@ -5,11 +5,13 @@ export default class FormValidator {
     this._submitButtonSelector = data.submitButtonSelector;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
-
+    this._inputList = Array.from(
+        this._formElement.querySelectorAll(this._inputSelector)
+      );
   }
 
 
-  //Определить элемент с текстом ошибки 
+  // определить элемент с текстом ошибки 
   _returnErrorElement(inputElement) {
     return this._formElement.querySelector(`#${inputElement.id}-error`);
   }
@@ -49,7 +51,7 @@ export default class FormValidator {
   }
 
   // деактивация кнопки
-  setInitialButtonState(isDisabled) {
+ _setInitialButtonState(isDisabled) {
     const buttonElement = this._formElement.querySelector(
       this._submitButtonSelector
     );
@@ -57,19 +59,29 @@ export default class FormValidator {
   }
 
   _toggleButtonState(inputList) {
-    this.setInitialButtonState(this._findInvalidInput(inputList));
+    this._setInitialButtonState(this._findInvalidInput(inputList));
   }
+
+  _clearInputValue(inputElement) {
+    inputElement.value = '';
+}
+
+_resetValidation() {
+    this._setInitialButtonState(true);
+    this._inputList.forEach((inputElement) => {
+        this._hideInputError(inputElement)
+        this._clearInputValue(inputElement)
+    });
+
+}
 
   // находим слушателей событий
   _setEventListeners() {
-    const inputList = Array.from(
-      this._formElement.querySelectorAll(this._inputSelector)
-    );
-    this._toggleButtonState(inputList);
-    inputList.forEach((inputElement) => {
+    this._toggleButtonState( this._inputList);
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList);
+        this._toggleButtonState( this._inputList);
       });
     });
   }
@@ -77,9 +89,6 @@ export default class FormValidator {
   // функция валидации форм 
   //Установить начальное состояние ошибок
   setDefaultErrorState() {
-    const inputList = Array.from(
-      this._formElement.querySelectorAll(this._inputSelector)
-    );
     inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });

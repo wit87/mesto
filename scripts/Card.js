@@ -41,8 +41,8 @@ export default class Card {
 
   generateCard() {
     this._element = this._getCard();
-    this._element.querySelector('.card__image').style.backgroundImage = `url(${this._image})`;
-    this._element.querySelector('.card__title').textContent = this._title;
+    this._element.querySelector('.card__image').style.backgroundImage = `url(${this._link})`;
+    this._element.querySelector('.card__title').textContent = this._name;
     this._setEventListeners();
 
     return this._element;
