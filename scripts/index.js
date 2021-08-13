@@ -78,7 +78,7 @@ function closePopup(popup) {
 
 // Закрытие окона по клику на Esc
 function handleEsc(event) {
-    if (event.key === 'Escape' || evt.key === 'Esc') {
+    if (event.key === 'Escape') {
         const activePopup = document.querySelector('.popup_is-opened');
         closePopup(activePopup);
 
