@@ -42,7 +42,7 @@ const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 
 const createCard = (data, wrap) => {
     const card = new Card(data.name, data.link, '.template', handleCardClick)
-    wrap.append(card.generateCard());
+    wrap.prepend(card.generateCard());
 }
 
 //Создание карточек
