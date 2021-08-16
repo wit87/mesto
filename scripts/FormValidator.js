@@ -5,9 +5,8 @@ export default class FormValidator {
     this._submitButtonSelector = data.submitButtonSelector;
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
-    this._inputList = Array.from(
-        this._formElement.querySelectorAll(this._inputSelector)
-      );
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
   }
 
 
@@ -15,6 +14,7 @@ export default class FormValidator {
   _returnErrorElement(inputElement) {
     return this._formElement.querySelector(`#${inputElement.id}-error`);
   }
+
 
   // проверка на валидность
   _checkInputValidity(inputElement) {
@@ -24,6 +24,7 @@ export default class FormValidator {
       this._hideInputError(inputElement);
     }
   }
+
 
   // показываем ошибку
   _showInputError(inputElement, errorMessage) {
@@ -50,12 +51,10 @@ export default class FormValidator {
     });
   }
 
+
   // деактивация кнопки
- _setInitialButtonState(isDisabled) {
-    const buttonElement = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
-    buttonElement.disabled = isDisabled;
+  _setInitialButtonState(isDisabled) {
+    this._buttonElement.disabled = isDisabled;
   }
 
   _toggleButtonState(inputList) {
@@ -64,31 +63,31 @@ export default class FormValidator {
 
   _clearInputValue(inputElement) {
     inputElement.value = '';
-}
+  }
 
-_resetValidation() {
+  resetValidation() {
     this._setInitialButtonState(true);
     this._inputList.forEach((inputElement) => {
-        this._hideInputError(inputElement)
-        this._clearInputValue(inputElement)
+      this._hideInputError(inputElement)
+      this._clearInputValue(inputElement)
     });
-
-}
+  }
 
   // находим слушателей событий
   _setEventListeners() {
-    this._toggleButtonState( this._inputList);
+    this._toggleButtonState(this._inputList);
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState( this._inputList);
+        this._toggleButtonState(this._inputList);
       });
     });
   }
 
+
   // функция валидации форм 
   //Установить начальное состояние ошибок
-  setDefaultErrorState() {
+  _setDefaultErrorState() {
     inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
