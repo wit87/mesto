@@ -38,18 +38,19 @@ const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 const createCard = (data) => {
     const card = new Card(data.name, data.link, cardTemplate, handleCardClick);
     const cardElement = card.generateCard();
+
     // Добавляем в DOM
     cardsGrid.prepend(cardElement);
 }
 
 // прорисовка карточек
-const renderCards = function () {
-    initialCards.forEach(function (item) {
+const renderCards = (items) => {
+    items.forEach(function (item) {
         createCard(item)
     })
 }
 
-renderCards();
+renderCards(initialCards);
 
 
 // Создание новой карточки
