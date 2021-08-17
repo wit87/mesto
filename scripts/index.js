@@ -37,29 +37,32 @@ const popupCloseImagePopup = imagePopup.querySelector('.popup__button-close')
 // Cоздание карточки
 const createCard = (data) => {
     const card = new Card(data.name, data.link, cardTemplate, handleCardClick);
-    const cardElement = card.generateCard();
+    return card.generateCard();
+   }
 
-    // Добавляем в DOM
-    cardsGrid.prepend(cardElement);
-}
+// Добавление карточек
+const renderCard = (data) => {
+    cardsGrid.append(createCard(data));
+};
 
-// прорисовка карточек
 const renderCards = (items) => {
     items.forEach(function (item) {
-        createCard(item)
-    })
+             renderCard(item)
+        })
 }
 
 renderCards(initialCards);
 
 
-// Создание новой карточки
+// Добавление новой карточки
 const addNewElement = (evt) => {
     evt.preventDefault()
-    createCard({
+    cardsGrid.prepend(
+        createCard({
         name: newMestoInput.value,
         link: newLinkInput.value
-    });
+    })
+    );
     closePopup(popupCardAdd);
     popupCardAddForm.reset();
     validationFormCard.resetValidation()
