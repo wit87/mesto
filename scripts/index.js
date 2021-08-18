@@ -56,7 +56,7 @@ renderCards(initialCards);
 
 // Добавление новой карточки
 const addNewElement = (evt) => {
-    evt.preventDefault()
+    evt.preventDefault();
     cardsGrid.prepend(
         createCard({
         name: newMestoInput.value,
@@ -64,8 +64,8 @@ const addNewElement = (evt) => {
     })
     );
     closePopup(popupCardAdd);
-    popupCardAddForm.reset();
-    validationFormCard.resetValidation()
+    popupCardAddForm.reset(); 
+    validationFormCard.resetValidation(); 
 };
 
 // Открыть всплывающее окно
@@ -102,10 +102,18 @@ function closePopupByClickOutside(evt) {
 }
 
 // Открыть всплывающее окно редактирование профиля
-const openProfilePopup = function () {
+const openProfilePopup = function () {    
     openPopup(popupProfileEdit);
+    validationFormProfile.resetValidation();
     popupProfileNameInput.value = profileName.textContent;
     popupProfileJobInput.value = profileJob.textContent;
+}
+
+// Открыть добавление карточки
+const openAddPopup = function () {     
+    openPopup(popupCardAdd);
+    popupCardAddForm.reset();  
+    validationFormCard.resetValidation();   
 }
 
 
@@ -132,7 +140,7 @@ popupCloseButtonElement.addEventListener('click', () => closePopup(popupProfileE
 popupProfileForm.addEventListener('submit', handleProfileSubmit)
 
 // добавление нового элемента
-popupOpenButtonElementAdd.addEventListener('click', () => openPopup(popupCardAdd))
+popupOpenButtonElementAdd.addEventListener('click', openAddPopup)
 popupCloseCardAddElement.addEventListener('click', () => closePopup(popupCardAdd))
 popupCardAddForm.addEventListener('submit', addNewElement)
 
