@@ -79,7 +79,7 @@ const popupWithUserForm = new PopupWithForm(
     handleFormSubmit: (userData) => {
     userInfo.setUserInfo(userData);
     popupWithUserForm.close();
-    },    
+    }    
   });
 
   //Открыть редактор профиля  клик
@@ -94,28 +94,19 @@ const popupWithUserForm = new PopupWithForm(
 //добавление карточки
 const popupWithPhotoForm = new PopupWithForm(
     popupCardAdd, {
-    handleFormSubmit: (photoData) => {
-      const userCard = new Section(
-        {
-          data: [photoData],
-          renderer: (cardItem) => {
+    handleFormSubmit: (cardItem) => { 
             const newCard = new Card({
-                name:cardItem.form_mesto,
-                link:cardItem.form_link
+                name: cardItem.form_mesto,
+                link: cardItem.form_link
             }, cardTemplate, handleCardClick);
-            document.querySelector(cardsGrid).prepend(newCard.renderCard());
-          },
-        },
-        cardsGrid
-      );
-    userCard.renderItems();      
-      popupWithPhotoForm.close();
-        },
+    document.querySelector(cardsGrid).prepend(newCard.renderCard());
+    popupCardAddForm.reset();
+    popupWithPhotoForm.close();
+          }      
   });
   
   //Добавление фоток клик
   popupOpenButtonAddPhoto.addEventListener('click', () => {
-    popupCardAddForm.reset();
     validationFormCard.resetValidation();  
     popupWithPhotoForm.open();
   });
