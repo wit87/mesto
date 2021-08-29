@@ -1,0 +1,25 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Learning platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "rd /s /q dist && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wit87/mesto.git"
+  },
+  "author": "Vitali Ziziuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wit87/mesto/issues"
+  },
+  "homepage": "https://github.com/wit87/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.0.0"
+  }
+}
