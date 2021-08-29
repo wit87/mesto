@@ -100,6 +100,7 @@ const popupWithPhotoForm = new PopupWithForm(
                 link: cardItem.form_link
             }, cardTemplate, handleCardClick);
     document.querySelector(cardsGrid).prepend(newCard.renderCard());
+    
     popupCardAddForm.reset();
     popupWithPhotoForm.close();
           }      
@@ -107,6 +108,6 @@ const popupWithPhotoForm = new PopupWithForm(
   
   //Добавление фоток клик
   popupOpenButtonAddPhoto.addEventListener('click', () => {
-    validationFormCard.resetValidation();  
+    validationFormCard.resetValidation();
     popupWithPhotoForm.open();
   });
