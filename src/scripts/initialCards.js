@@ -1,27 +1,34 @@
 // Массив карточек
+import kremlin from '../images/mesto/moskovsky-kreml-1.jpg';
+import hrista from '../images/mesto/hram-hrista.jpg';
+import rzhev from '../images/mesto/rzhev-memory.jpg';
+import avrora from '../images/mesto/avrora.jpg';
+import baikal from '../images/mesto/baikal.jpg';
+import pskov from '../images/mesto/pskovskiy_kreml_4.jpg';
+
 const initialCards = [{
     name: 'Московский Кремль',
-    link: './images/mesto/moskovsky-kreml-1.jpg'
+    link: kremlin
 },
 {
     name: 'Храм Христа Спасителя',
-    link: './images/mesto/hram-hrista.jpg'
+    link: hrista
 },
 {
     name: 'Ржевский мемориал',
-    link: './images/mesto/rzhev-memory.jpg'
+    link: rzhev
 },
 {
     name: 'Крейсер «Аврора»',
-    link: './images/mesto/avrora.jpg'
+    link: avrora
 },
 {
     name: 'Озеро Байкал',
-    link: './images/mesto/baikal.jpg'
+    link: baikal
 },
 {
     name: 'Псковский Кремль',
-    link: './images/mesto/pskovskiy_kreml_4.jpg'
+    link: pskov
 }
 ];
 
