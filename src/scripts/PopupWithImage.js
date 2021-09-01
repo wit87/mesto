@@ -8,8 +8,8 @@ export default class PopupWithImage extends Popup {
   //Открыть попап
   open(name, link) {
     super.open();
-    const imageBig = document.querySelector('.popup__image');
-    const imageBigTitle = document.querySelector('.popup__image-title');
+    const imageBig =  this._popup.querySelector('.popup__image');
+    const imageBigTitle =  this._popup.querySelector('.popup__image-title');
     imageBig.src = link;
     imageBig.alt = name;
     imageBigTitle.textContent = name;    

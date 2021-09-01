@@ -13,8 +13,8 @@ export default class UserInfo {
   }
 
   // установить данные
-  setUserInfo({ form_name, form_job }) {
-      this._name.textContent = form_name;
-      this._job.textContent = form_job;
-    }
+  setUserInfo( {form_name, form_job} ) {
+    this._name.textContent = form_name; 
+    this._job.textContent = form_job;
+  }
   }
