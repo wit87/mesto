@@ -13,9 +13,8 @@ const cardsGrid = '.cards__grid';
 const cardTemplate = '.card-template';
 
 // Кнопки редактирование и добавление
-const profileElement = document.querySelector('.profile')
-const popupOpenButtonEditProfile = profileElement.querySelector('.profile__edit-button')
-const popupOpenButtonAddPhoto = profileElement.querySelector('.profile__add-button')
+const popupOpenButtonEditProfile = document.querySelector('.profile__edit-button')
+const popupOpenButtonAddPhoto = document.querySelector('.profile__add-button')
 
 
 // Данные профиля
@@ -23,10 +22,11 @@ const profileData = {
     nameSelector: '.profile__name',
     jobSelector: '.profile__job'
   };
-  
+
 // инпуты редактирования профиля
-const popupProfileNameInput = document.querySelector(popupProfileEdit).querySelector('.popup__input_type_name')
-const popupProfileJobInput = document.querySelector(popupProfileEdit).querySelector('.popup__input_type_job')
+const profileNameInput = document.querySelector('.popup__input_type_name')
+const profileJobInput = document.querySelector('.popup__input_type_job')  
+  
 
 // для валидации
 const validationConfig = {
@@ -72,19 +72,18 @@ const initialCards = [{
 
 export 
 {
-popupProfileEdit,
-popupCardAdd,
-imagePopup,
-popupProfileForm,
-popupCardAddForm,
-cardsGrid,
-cardTemplate,
-profileElement,
-popupOpenButtonEditProfile,
-popupOpenButtonAddPhoto,
-profileData,
-popupProfileNameInput,
-popupProfileJobInput,
-validationConfig,
-initialCards
+    popupProfileEdit,
+    popupCardAdd,
+    imagePopup,
+    popupProfileForm,
+    popupCardAddForm,
+    cardsGrid,
+    cardTemplate,
+    popupOpenButtonEditProfile,
+    popupOpenButtonAddPhoto,
+    profileData,
+    profileNameInput, 
+    profileJobInput,
+    validationConfig,
+    initialCards
 }

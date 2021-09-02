@@ -2,24 +2,22 @@ import './index.css';
 
 import 
 {
-popupProfileEdit,
-popupCardAdd,
-imagePopup,
-popupProfileForm,
-popupCardAddForm,
-cardsGrid,
-cardTemplate,
-popupOpenButtonEditProfile,
-popupOpenButtonAddPhoto,
-profileData,
-popupProfileNameInput,
-popupProfileJobInput,
-validationConfig,
-initialCards
+  popupProfileEdit,
+  popupCardAdd,
+  imagePopup,
+  popupProfileForm,
+  popupCardAddForm,
+  cardsGrid,
+  cardTemplate,
+  popupOpenButtonEditProfile,
+  popupOpenButtonAddPhoto,
+  profileData,
+  profileNameInput, 
+  profileJobInput,
+  validationConfig,
+  initialCards
  } from '../utils/constants.js'
 
-//import initialCards from '../utils/initialCards.js';
-//import validationConfig from '../utils/validationConfig.js';
 import FormValidator from '../scripts/FormValidator.js';
 import Card from '../scripts/Card.js';
 import Section from '../scripts/Section.js';
@@ -69,8 +67,8 @@ const userInfo = new UserInfo(profileData);
 //Создать экземпляр класса PopupWithForm
 const popupWithUserForm = new PopupWithForm(
     popupProfileEdit, {
-    handleFormSubmit: (userData) => {
-    userInfo.setUserInfo(userData);
+    handleFormSubmit: () => {
+    userInfo.setUserInfo(profileNameInput, profileJobInput)
     popupWithUserForm.close();
     }    
   });
@@ -78,8 +76,8 @@ const popupWithUserForm = new PopupWithForm(
   //Открыть редактор профиля  клик
   popupOpenButtonEditProfile.addEventListener('click', () => {
     validationFormProfile.resetValidation();
-    popupProfileNameInput.value = userInfo.getUserInfo().name;
-    popupProfileJobInput.value = userInfo.getUserInfo().job;
+    profileNameInput.value = userInfo.getUserInfo().name;
+    profileJobInput.value = userInfo.getUserInfo().job;
     popupWithUserForm.open();   
   });
 
