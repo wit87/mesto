@@ -23,7 +23,7 @@
     transition: opacity 0.4s;
 }
 
-.popup__button-save:disabled {
+/* .popup__button-save:disabled {
     background: #fff;
     border: 1px solid rgba(0, 0, 0, .5);
     color: #000;
@@ -35,7 +35,7 @@
     -ms-transition: opacity 0.4s;
     -o-transition: opacity 0.4s;
     transition: opacity 0.4s;
-  }
+  } */
 
 .popup__button-save:hover {
     opacity: 0.5;

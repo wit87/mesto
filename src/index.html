@@ -11,17 +11,17 @@
     <div class="root">
         <main class="content">
             <header class="header">
-                <img src="<%=require('./images/logo/logo.svg')%>" alt="Логотип места России" class="header__logo">
+                <img src="<%=require('./images/logo.svg')%>" alt="Логотип места России" class="header__logo">
             </header>
             <section class="profile">
                 <div class="profile__block">
-                    <img src="<%=require('./images/avatar/kusto.jpg')%>" alt="Жак-Ив Кусто" class="profile__avatar">
+                    <div  class="profile__avatar"></div >
                     <div class="profile__info">
                         <div class="profile__block-name">
-                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <h1 class="profile__name"></h1>
                             <button class="profile__edit-button" type="button"></button>
                         </div>
-                        <p class="profile__job">Исследователь океана</p>
+                        <p class="profile__about"></p>
                     </div>
                 </div>
                 <button class="profile__add-button" type="button"></button>
@@ -40,13 +40,27 @@
                 <form class="popup__form" name="edit_form" novalidate>
                     <section class="popup__section">
                         <input type="text" class="popup__input popup__input_type_name" id="form_name"
-                            name="form_name" placeholder="Имя"  maxlength="40" minlength="2" required>
+                            name="name" placeholder="Имя"  maxlength="40" minlength="2" required>
                         <span class="popup__input-error" id="form_name-error"></span></section>
                     <section class="popup__section">
-                        <input type="text" class="popup__input popup__input_type_job" id="form_job"
-                            name="form_job" placeholder="Вид деятельности"  maxlength="200" minlength="2" required>
-                            <span class="popup__input-error" id="form_job-error"></span></section>   
-                        <button class="popup__button-save" type="submit" disabled>Сохранить</button>
+                        <input type="text" class="popup__input popup__input_type_about" id="form_about"
+                            name="about" placeholder="Вид деятельности"  maxlength="200" minlength="2" required>
+                            <span class="popup__input-error" id="form_about-error"></span></section>   
+                        <input class="popup__button-save" type="submit" value="Сохранить" name="submit">
+                </form>
+                <button class="popup__button-close" type="button"></button>
+            </div>
+        </div>
+
+        <div class="popup popup_edit-avatar">
+            <div class="popup__container">
+                <h2 class="popup__heading">Обновить аватар</h2>
+                <form class="popup__form" name="edit_avatar" novalidate>
+                    <section class="popup__section">
+                        <input type="url" class="popup__input popup__input_type_avatar" id="form_avatar"
+                            name="avatar" placeholder="Ссылка на картинку" required>
+                         <span class="popup__input-error" id="form_link-error"></span></section> 
+                        <input class="popup__button-save" type="submit" value="Сохранить" name="submit">
                 </form>
                 <button class="popup__button-close" type="button"></button>
             </div>
@@ -58,13 +72,23 @@
                 <form class="popup__form" name="add_form" novalidate>
                     <section class="popup__section">
                         <input type="text" class="popup__input popup__input_type_mesto" id="form_mesto"
-                            name="form_mesto" placeholder="Название"  maxlength="30" minlength="2" required>                    
+                            name="name" placeholder="Название"  maxlength="30" minlength="2" required>                    
                     <span class="popup__input-error" id="form_mesto-error"></span></section>
                     <section class="popup__section">
                         <input type="url" class="popup__input popup__input_type_link" id="form_link"
-                            name="form_link" placeholder="Ссылка на картинку" required>
+                            name="link" placeholder="Ссылка на картинку" required>
                             <span class="popup__input-error" id="form_link-error"></span></section>       
-                        <button class="popup__button-save" type="submit" disabled>Сохранить</button>
+                        <input class="popup__button-save" type="submit" value="Сохранить" name="submit">
+                </form>
+                <button class="popup__button-close" type="button"></button>
+            </div>
+        </div>
+
+        <div class="popup popup_delete-card">
+            <div class="popup__container">
+                <h2 class="popup__heading">Вы уверены?</h2>
+                <form class="popup__form" name="delete_card" novalidate>
+                    <input class="popup__button-save" type="submit" value="Да" name="submit">
                 </form>
                 <button class="popup__button-close" type="button"></button>
             </div>
@@ -77,18 +101,20 @@
                 <button class="popup__button-close" type="button"></button>
             </div>
         </div>
-
     </div>
+
     <template class="card-template">
         <li class="card">
             <img src=" " alt=" " class="card__image">
             <div class="card__item">
                 <h3 class="card__title"></h3>
+                <div class="card__like-container">
                 <button class="card__button-like" type="button"></button>
+                <span class="card__like-counter"></span>
+            </div>
             </div>
             <button type="button" class="card__button-delete"></button>
         </li>
     </template>
-    <script type="module" src="./scripts/index.js"></script>
 </body>
 </html>
