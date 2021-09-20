@@ -26,9 +26,9 @@ export default class PopupWithForm extends Popup {
   // уведомление пользователя о процессе загрузки
 renderLoading(isLoading) {
 if (isLoading) {
-  this._submitButton.value = "Сохранение...";
+  this._submitButton.textContent = "Сохранение...";
 } else {
-  this._submitButton.value = "Сохранить";
+  this._submitButton.textContent = "Сохранить";
 }
 }
 
