@@ -69,9 +69,9 @@ export default class FormValidator {
         });
     }
 
-    setDefaultErrorState(formElement) {
-        const inputList = Array.from(formElement.querySelectorAll(this._inputElement));
-        const submitButtonSelector = formElement.querySelector(this._submitButtonSelector);
+    setDefaultErrorState() {
+        const inputList = Array.from(this._targetFormElement.querySelectorAll(this._inputElement));
+        const submitButtonSelector = this._targetFormElement.querySelector(this._submitButtonSelector);
 
         inputList.forEach((inputElement) => {
             this._hideInputError(inputElement);

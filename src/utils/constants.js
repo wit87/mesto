@@ -3,10 +3,16 @@ export const token = 'c8515107-f4ca-4786-9dbe-57c915771a5d';
 // Идентификатор группы
 export const url = 'https://mesto.nomoreparties.co/v1/cohort-27/';
 
+// Данные профиля и аватар
+export const userName = '.profile__name';
+export const userAbout = '.profile__about';
+export const userAvatar = '.profile__avatar';
+
 // Кнопки редактирование профиля и добавление карточек
+export const avatarImg = document.querySelector(userAvatar);
 export const popupOpenButtonEditProfile = document.querySelector('.profile__edit-button')
 export const popupOpenButtonAddPhoto = document.querySelector('.profile__add-button')
-export const submitButtons = document.querySelectorAll('.popup__button-save')
+
 
 // Popups
 export const popupProfileEdit = '.popup_edit-profile'
@@ -19,11 +25,6 @@ export const popupCardDelete = '.popup_delete-card'
 export const popupProfileEditForm = document.querySelector(popupProfileEdit).querySelector('.popup__form')
 export const popupCardAddForm = document.querySelector(popupCardAdd).querySelector('.popup__form')
 export const popupEditAvatarForm = document.querySelector(popupEditAvatar).querySelector('.popup__form')
-
-// Данные профиля и аватар
-export const userName = document.querySelector('.profile__name');
-export const userAbout = document.querySelector('.profile__about');
-export const avatarImg = document.querySelector('.profile__avatar');
 
 // инпуты редактирования профиля
 export const profileNameInput = document.querySelector('.popup__input_type_name')
