@@ -45,16 +45,14 @@ const api = new Api({
 
 // popup удаления карточки
 const popupForDeleteCard = new PopupDeleteCard(popupCardDelete);
-popupForDeleteCard.setEventListeners();
 
 function handleCardDelete(card) {
-    popupForDeleteCard.open();
-    popupForDeleteCard.setLoading(true);
+    popupForDeleteCard.open();    
     popupForDeleteCard.setFormSubmitHandler(() => {        
         api.deleteCard(card._id)
             .then(() => {
                 card.deleteCard();
-
+                popupForDeleteCard.setLoading(true);
                 popupForDeleteCard.close();
             })
             .catch((err) => {
@@ -128,7 +126,7 @@ const popupWithUserForm = new PopupWithForm({
 
 // редактор профиля (КЛИК)
 popupOpenButtonEditProfile.addEventListener('click', () => {
-    validationFormProfile.setDefaultErrorState();
+    validationFormProfile.resetValidation();
 
     const userData = user.getUserInfo();
 
@@ -163,8 +161,16 @@ const popupWithPhotoForm = new PopupWithForm({
 });
 
 popupOpenButtonAddPhoto.addEventListener('click', () => {
-    validationFormCard.setDefaultErrorState();
+    validationFormCard.resetValidation();
     popupWithPhotoForm.open();
+});
+
+
+// данные пользователя
+const user = new UserInfo({
+    nameSelector: userName,
+    aboutSelector: userAbout,
+    avatarSelector: userAvatar
 });
 
 // обновление аватара
@@ -174,7 +180,7 @@ const popupWithAvatarForm = new PopupWithForm({
         popupWithAvatarForm.renderLoading(true);
         api.setAvatar(item)
             .then((data) => {
-                avatarImg.style.backgroundImage = `url(${data.avatar})`;
+                user.setUserInfo(data);
                 popupWithAvatarForm.close();
             })
             .catch((err) => {
@@ -188,15 +194,8 @@ const popupWithAvatarForm = new PopupWithForm({
 
 // клик по аватару
 avatarImg.addEventListener('click', () => {
-    validationFormAvatar.setDefaultErrorState();
+    validationFormAvatar.resetValidation();
     popupWithAvatarForm.open();
-});
-
-// данные пользователя
-const user = new UserInfo({
-    nameSelector: userName,
-    aboutSelector: userAbout,
-    avatarSelector: userAvatar
 });
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])

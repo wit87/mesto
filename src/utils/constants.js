@@ -36,12 +36,10 @@ export const cardTemplate = '.card-template';
 
 // Для валидации
 export const validationConfig = {
-    sectionClass: '.popup__section',
-    formElement: '.popup__form',
-    inputElement: '.popup__input',
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button-save',
-    disabledButtonClass: 'popup__button-save_disabled',
+    inactiveButtonClass: 'popup__button-save_disabled',
     inputErrorClass: 'popup__input_error',
-    errorShowClass: 'popup__input-error_visible',    
-    errorClass: '.popup__input-error'      
-}
+    errorClass: 'popup__input-error_visible',
+  };

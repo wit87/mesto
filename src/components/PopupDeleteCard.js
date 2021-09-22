@@ -11,6 +11,12 @@ setFormSubmitHandler(cb) {
     this.submitHandler = cb;
 }
 
+_handleSubmit = (evt) => {
+  evt.preventDefault();
+  this.submitHandler();
+};
+
+
   // уведомление пользователя о процессе загрузки
 setLoading(isLoading) {
         if (isLoading) {
@@ -20,19 +26,14 @@ setLoading(isLoading) {
         }
       }
 
-setEventListeners() {
-    super._setEventListeners();
-    this._formElement.addEventListener('submit', (event) => {
-        event.preventDefault();
-        this.submitHandler();
-    });
-}
+_setEventListeners() {
+  super._setEventListeners();
+  this._formElement.addEventListener("submit", this._handleSubmit)
+  }
 
 close() {
-    this._formElement.removeEventListener('submit', (event) => {
-        event.preventDefault();
-        this.submitHandler();
-    });
-    super.close();
-    }
+  this._formElement.removeEventListener("submit", this._handleSubmit)
+  super.close();
+  }
+
 }
