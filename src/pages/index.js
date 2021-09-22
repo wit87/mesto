@@ -48,11 +48,11 @@ const popupForDeleteCard = new PopupDeleteCard(popupCardDelete);
 
 function handleCardDelete(card) {
     popupForDeleteCard.open();    
-    popupForDeleteCard.setFormSubmitHandler(() => {        
+    popupForDeleteCard.setFormSubmitHandler(() => { 
+        popupForDeleteCard.setLoading(true);       
         api.deleteCard(card._id)
             .then(() => {
                 card.deleteCard();
-                popupForDeleteCard.setLoading(true);
                 popupForDeleteCard.close();
             })
             .catch((err) => {
