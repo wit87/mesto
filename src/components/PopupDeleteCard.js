@@ -20,9 +20,9 @@ _handleSubmit = (evt) => {
   // уведомление пользователя о процессе загрузки
 setLoading(isLoading) {
         if (isLoading) {
-          this._buttonElement.textContent = "Да";
-        } else {
           this._buttonElement.textContent = "Удаление...";
+        } else {
+          this._buttonElement.textContent = "Да";
         }
       }
 
